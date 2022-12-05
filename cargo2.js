@@ -515,35 +515,20 @@ const instructions = [
 ];
 let array = [];
 const finalArray = instructions.map((x) => {
-  console.log("table before", initialCharge);
   const cutLength = x[0];
   const takeCargoNumber = x[1] - 1;
   const putCargoNumber = x[2] - 1;
   const stringLength = initialCharge[takeCargoNumber].length;
-  console.log("whatcut", initialCharge[takeCargoNumber]);
-  console.log(
-    "cutLength",
-    cutLength,
-    "stringLength",
-    stringLength,
-    "stringLength - cutLength",
-    stringLength - cutLength
-  );
+
   const copied = initialCharge[takeCargoNumber].slice(
     stringLength - cutLength,
     stringLength
   );
-  console.log("copied", copied);
-
   initialCharge[takeCargoNumber] = initialCharge[takeCargoNumber].slice(
     0,
     stringLength - cutLength
   );
-  console.log("take", takeCargoNumber, initialCharge[takeCargoNumber]);
   initialCharge[putCargoNumber] = initialCharge[putCargoNumber] + copied;
-  console.log("put", putCargoNumber, initialCharge[putCargoNumber]);
-  console.log("table after", initialCharge);
-  console.log("\n", "\n", "\n");
 });
 
 const topCargo = initialCharge.map((x) => x[x.length - 1]);
